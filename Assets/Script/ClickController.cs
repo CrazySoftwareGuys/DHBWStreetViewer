@@ -20,11 +20,12 @@ public class ClickController : MonoBehaviour
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
             if (hit)
             {
+                Debug.Log("hit something: " + hitInfo.transform.name);
                 if (hitInfo.transform.gameObject.tag == "Arrow")
                 {
                     ArrowScript script = hitInfo.transform.GetComponent<ArrowScript>();
                     Vector3 goToPosition = GameObject.Find(script.GoesToSphere).GetComponent<Transform>().position;
-                    cameraMovement.InitCameraMovement(goToPosition, 5f);
+                    cameraMovement.InitCameraMovement(goToPosition, 10f);
                 }
             }
         }
